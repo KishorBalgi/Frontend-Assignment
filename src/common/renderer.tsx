@@ -1,0 +1,25 @@
+import { SchemaProps } from "../types/uiElements";
+import UIMapper from "../util/uiMapper";
+
+const Renderer = ({ schema, type }: SchemaProps) => {
+  const schemaItems = schema.sort((a, b) => a.sort - b.sort);
+  return (
+    <>
+      {schemaItems.map((element) => {
+        const { uiType } = element;
+        const Component = UIMapper[uiType as keyof typeof UIMapper];
+        return (
+          <div
+            className={`px-2 my-2 bg-blue-50 rounded-md ${
+              type == "parent" && "border border-blue-200"
+            }`}
+          >
+            <Component {...element} />
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
+export default Renderer;
