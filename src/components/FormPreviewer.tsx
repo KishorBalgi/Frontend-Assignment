@@ -43,7 +43,7 @@ const FormPreviewer = ({ schema }: Props) => {
                   className="bg-blue-200 text-black border border-blue-300 p-2 rounded-md"
                   type="button"
                 >
-                  Cancle
+                  Cancel
                 </button>
                 <button
                   className="bg-blue-700 text-white p-2 rounded-md"
