@@ -19,8 +19,10 @@ const Renderer = ({ schema, type }: SchemaProps) => {
             }`}
           >
             {uiType === "Radio" ? (
+              // @ts-ignore
               <Component data={{ ...element }} subParameters={ignoreItems} />
             ) : (
+              // @ts-ignore
               <Component {...element} />
             )}
           </div>
