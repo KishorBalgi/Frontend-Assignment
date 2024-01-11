@@ -1,66 +1,63 @@
+import { useRef, useState } from "react";
 import Renderer from "../common/renderer";
-import Radio from "./UIElements/Radio";
+import ResponseModal from "./ResponseModal";
 
 type Props = {
   schema: never[];
 };
 
-const data = {
-  sort: 0,
-  label: "Pizza_type Type",
-  description: "",
-  validate: {
-    required: true,
-    options: [
-      {
-        label: "Naples Style Pizza",
-        value: "naples",
-        description: "",
-        icon: "",
-      },
-      {
-        label: "New York Style Pizza",
-        value: "newyork",
-        description: "",
-        icon: "",
-      },
-    ],
-    defaultValue: "naples",
-    immutable: false,
-  },
-  jsonKey: "type",
-  uiType: "Radio",
-  icon: "",
-  level: 1,
-  placeholder: "",
-};
-
 const FormPreviewer = ({ schema }: Props) => {
+  const formRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({});
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+
+    if (formRef.current == null) return;
+    const data = new FormData(formRef.current);
+
+    setFormData(Object.fromEntries(data.entries()));
+    setShowModal(true);
+  }
+
+  function onClose() {
+    setShowModal(false);
+  }
+
   return (
-    <div className="flex flex-col h-screen">
-      <div className=" bg-dark p-2 text-md font-semibold ">
-        <h1>Form Preview</h1>
-      </div>
-      <div className="overflow-auto">
-        <div className="bg-white text-black p-2 m-2 rounded-md">
-          <h1 className="text-xl font-semibold border-b pb-5 mx-2 mb-2">
-            Form
-          </h1>
-          <form>
-            <Renderer schema={schema} type="parent" />
-
-            {/* <Radio {...data} /> */}
-
-            <button
-              className="bg-blue-500 text-black p-2 rounded-md"
-              type="submit"
-            >
-              Submit
-            </button>
-          </form>
+    <>
+      <div className="flex flex-col h-screen">
+        <div className=" bg-dark p-2 text-md font-semibold ">
+          <h1>Form Preview</h1>
+        </div>
+        <div className="overflow-auto">
+          <div className="bg-white text-black p-2 m-2 rounded-md">
+            <h1 className="text-xl font-semibold border-b pb-5 mx-2 mb-2">
+              Form
+            </h1>
+            <form ref={formRef} onSubmit={handleSubmit}>
+              <Renderer schema={schema} type="parent" />
+              <div className="w-full flex justify-end gap-2 mt-5">
+                <button
+                  className="bg-blue-200 text-black border border-blue-300 p-2 rounded-md"
+                  type="button"
+                >
+                  Cancle
+                </button>
+                <button
+                  className="bg-blue-700 text-white p-2 rounded-md"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+      {showModal && <ResponseModal response={formData} onClose={onClose} />}
+    </>
   );
 };
 

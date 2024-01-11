@@ -1,9 +1,11 @@
 import Tooltip from "../../common/tooltip";
 import { InputProps } from "../../types/uiElements";
 const Input = (props: InputProps) => {
-  const { label, description, validate, jsonKey, icon, placeholder } = props;
+  const { label, description, validate, jsonKey, icon, placeholder, disable } =
+    props;
+
   return (
-    <div className="grid grid-cols-2 my-5">
+    <div className={`grid grid-cols-2 my-5 ${disable ? "hidden" : ""}`}>
       <div className="flex gap-2 items-center">
         <label className="font-semibold" htmlFor={jsonKey}>
           {label}
@@ -19,6 +21,7 @@ const Input = (props: InputProps) => {
           required={validate?.required || false}
           readOnly={validate?.immutable || false}
           pattern={validate?.pattern}
+          defaultValue={disable ? validate?.pattern || "" : ""}
         />
       </div>
     </div>

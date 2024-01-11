@@ -13,7 +13,7 @@ const Group = (props: GroupProps) => {
     placeholder,
   } = props;
   return (
-    <div className="grid grid-cols-1 my-5">
+    <div id={jsonKey} className="grid grid-cols-1 my-5">
       <div className="flex gap-2 items-center border-b pb-5 mx-3">
         <label className="font-semibold" htmlFor={jsonKey}>
           {label}

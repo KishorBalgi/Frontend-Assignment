@@ -7,6 +7,7 @@ type commonProps = {
   icon: string;
   level: number;
   placeholder: string;
+  disable?: boolean;
 };
 
 type validate = {
@@ -14,6 +15,15 @@ type validate = {
   immutable?: boolean;
   pattern?: string;
 };
+
+type schemas = (
+  | InputProps
+  | RadioProps
+  | SelectProps
+  | SwitchProps
+  | GroupProps
+  | IgnoreProps
+)[];
 
 export type InputProps = commonProps & {
   validate?: validate;
@@ -40,11 +50,11 @@ export type SwitchProps = commonProps & {
 
 export type GroupProps = commonProps & {
   validate?: validate;
-  subParameters: (InputProps | SelectProps | SwitchProps)[];
+  subParameters: schemas;
 };
 
 export type SchemaProps = {
-  schema: (InputProps | SelectProps | SwitchProps | GroupProps)[];
+  schema: schemas;
   type: "parent" | "child";
 };
 
@@ -59,4 +69,23 @@ export type RadioProps = commonProps & {
     }[];
     defaultValue: string;
   };
+};
+// "conditions": [
+//   {
+//     "jsonKey": "pizza_type.type",
+//     "op": "==",
+//     "value": "naples",
+//     "action": "enable"
+//   }
+// ],
+
+export type IgnoreProps = commonProps & {
+  validate?: validate;
+  conditions: {
+    jsonKey: string;
+    op: string;
+    value: string;
+    action: string;
+  }[];
+  subParameters: schemas;
 };

@@ -2,19 +2,27 @@ import { SchemaProps } from "../types/uiElements";
 import UIMapper from "../util/uiMapper";
 
 const Renderer = ({ schema, type }: SchemaProps) => {
-  const schemaItems = schema.sort((a, b) => a.sort - b.sort);
+  const ignoreItems = schema.filter((item) => item.uiType === "Ignore");
+  const schemaItems = schema
+    .filter((item) => item.uiType !== "Ignore")
+    .sort((a, b) => a.sort - b.sort);
   return (
     <>
       {schemaItems.map((element) => {
         const { uiType } = element;
+
         const Component = UIMapper[uiType as keyof typeof UIMapper];
         return (
           <div
             className={`px-2 my-2 bg-blue-50 rounded-md ${
-              type == "parent" && "border border-blue-200"
+              type == "parent" ? "border border-blue-200" : ""
             }`}
           >
-            <Component {...element} />
+            {uiType === "Radio" ? (
+              <Component data={{ ...element }} subParameters={ignoreItems} />
+            ) : (
+              <Component {...element} />
+            )}
           </div>
         );
       })}

@@ -3,6 +3,7 @@ import Select from "../components/UIElements/Select";
 import Switch from "../components/UIElements/Switch";
 import Group from "../components/UIElements/Group";
 import Radio from "../components/UIElements/Radio";
+import Ignore from "../components/UIElements/Ignore";
 
 const UIMapper = {
   Input: Input,
@@ -10,7 +11,7 @@ const UIMapper = {
   Switch: Switch,
   Radio: Radio,
   Group: Group,
-  Ignore: () => <></>,
+  Ignore: Ignore,
 };
 
 export default UIMapper;
