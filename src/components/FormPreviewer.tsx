@@ -27,7 +27,7 @@ const FormPreviewer = ({ schema }: Props) => {
 
   return (
     <>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-[50vh] md:h-screen">
         <div className=" bg-dark p-2 text-md font-semibold ">
           <h1>Form Preview</h1>
         </div>

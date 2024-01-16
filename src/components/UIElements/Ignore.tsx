@@ -25,6 +25,7 @@ const Ignore = (props: Props) => {
   function checkCondition() {
     if (conditions) {
       const result = conditionResolver(conditions);
+      console.log(label, result);
       setCondition(result);
     }
   }
@@ -35,7 +36,7 @@ const Ignore = (props: Props) => {
     if (rendererContainer) {
       checkCondition();
     }
-  }, [childRef]);
+  }, [conditions, childRef]);
 
   return (
     <>

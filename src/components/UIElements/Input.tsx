@@ -1,5 +1,7 @@
+import Label from "../../common/label";
 import Tooltip from "../../common/tooltip";
 import { InputProps } from "../../types/uiElements";
+
 const Input = (props: InputProps) => {
   const { label, description, validate, jsonKey, icon, placeholder, disable } =
     props;
@@ -7,9 +9,11 @@ const Input = (props: InputProps) => {
   return (
     <div className={`grid grid-cols-2 my-5 ${disable ? "hidden" : ""}`}>
       <div className="flex gap-2 items-center">
-        <label className="font-semibold" htmlFor={jsonKey}>
-          {label}
-        </label>
+        <Label
+          label={label}
+          htmlFor={jsonKey}
+          required={validate?.required || false}
+        />
         {description != "" && <Tooltip text={description} />}
       </div>
       <div>

@@ -19,7 +19,7 @@ const SchemaEditor = ({ setSchema }: Props) => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-[50vh] md:h-screen">
       <div className="flex gap-2 bg-dark p-2 text-md font-semibold">
         <h1>Schema Editor</h1>
         {error && <p className="text-red-500">{error}</p>}

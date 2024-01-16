@@ -6,7 +6,7 @@ const EditorLayout = () => {
   const [schema, setSchema] = useState([]);
   return (
     <div className="w-screen h-screen">
-      <div className=" grid grid-cols-2">
+      <div className=" grid md:grid-cols-2">
         <SchemaEditor setSchema={setSchema} />
 
         <FormPreviewer schema={schema} />

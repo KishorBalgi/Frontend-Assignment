@@ -1,14 +1,18 @@
 import { SelectProps } from "../../types/uiElements";
 import Tooltip from "../../common/tooltip";
+import Label from "../../common/label";
 
 const Select = (props: SelectProps) => {
   const { label, description, validate, jsonKey, icon } = props;
   return (
     <div className="grid grid-cols-2 my-5">
       <div className="flex gap-2 items-center">
-        <label className="font-semibold" htmlFor={jsonKey}>
-          {label}
-        </label>
+        <Label
+          label={label}
+          htmlFor={jsonKey}
+          required={validate?.required || false}
+        />
+
         {description != "" && <Tooltip text={description} />}
       </div>
       <div>

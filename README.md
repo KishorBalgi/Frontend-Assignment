@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# Frontend Assigment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React.js application that accepts a JSON UI schema and converts it into a Form.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. - Fork the [repo](https://github.com/KishorBalgi/Frontend-Assignment)
+   - Clone the repo to your local system
 
-## Expanding the ESLint configuration
+   ```git
+   git clone https://github.com/KishorBalgi/Frontend-Assignment frontend-assignment-kishor-balgi
+   cd frontend-assignment-kishor-balgi
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+   ```
 
-- Configure the top-level `parserOptions` property like this:
+2. - Front End:
+     Install all the dependencies
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+   ```bash
+   npm install # This will install all the required dependencies for the front-end
+   ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+   - Run Front End:
+
+   ```bash
+    npm run dev
+   ```

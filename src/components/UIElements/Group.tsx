@@ -1,6 +1,7 @@
 import { GroupProps } from "../../types/uiElements";
 import Tooltip from "../../common/tooltip";
 import Renderer from "../../common/renderer";
+import Label from "../../common/label";
 
 const Group = (props: GroupProps) => {
   const {
@@ -15,9 +16,11 @@ const Group = (props: GroupProps) => {
   return (
     <div id={jsonKey} className="grid grid-cols-1 my-5">
       <div className="flex gap-2 items-center border-b pb-5 mx-3">
-        <label className="font-semibold" htmlFor={jsonKey}>
-          {label}
-        </label>
+        <Label
+          label={label}
+          htmlFor={jsonKey}
+          required={validate?.required || false}
+        />
         {description != "" && <Tooltip text={description} />}
       </div>
       <div>

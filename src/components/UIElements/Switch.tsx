@@ -1,5 +1,6 @@
 import { SwitchProps } from "../../types/uiElements";
 import Tooltip from "../../common/tooltip";
+import Label from "../../common/label";
 
 const Switch = (props: SwitchProps) => {
   const { label, description, validate, jsonKey, icon } = props;
@@ -15,9 +16,11 @@ const Switch = (props: SwitchProps) => {
           // required={validate?.required || false}
           disabled={validate?.immutable || false}
         />
-        <label className="font-semibold" htmlFor={jsonKey}>
-          {label}
-        </label>
+        <Label
+          label={label}
+          htmlFor={jsonKey}
+          required={validate?.required || false}
+        />
         {description != "" && <Tooltip text={description} />}
       </div>
     </div>
